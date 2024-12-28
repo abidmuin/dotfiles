@@ -10,7 +10,7 @@ ipc_socket = true
 
 [window]
 decorations = "Full"
-opacity = 0.7
+opacity = 0.85
 dynamic_title = true
 decorations_theme_variant = "Dark"
 
