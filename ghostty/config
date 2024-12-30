@@ -1,0 +1,27 @@
+# SHELL INTEGRATION
+
+
+# THEME
+# theme = "MaterialDesignColors"
+#theme = "GruvboxDarkHard"
+theme = "Cobalt2"
+
+
+# FONT 
+font-family = "FiraCode Nerd Font"
+bold-is-bright = true
+
+mouse-hide-while-typing = true
+
+background-opacity = 0.85
+# background-blur-radius = 5
+fullscreen = true
+#removes the top title bar
+window-decoration = false
+window-colorspace = "display-p3"
+
+clipboard-read = "allow"
+clipboard-write = "allow"
+clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = true
+copy-on-select = true
