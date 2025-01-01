@@ -1,22 +1,27 @@
-pcall(function()
-  dofile(vim.g.base46_cache .. "syntax")
-  dofile(vim.g.base46_cache .. "treesitter")
-end)
-
 local options = {
   ensure_installed = {
+    "bash",
+    -- "c",
+    -- "cmake",
+    -- "cpp",
+    "fish",
+    -- "go",
+    -- "gomod",
+    -- "gosum",
+    -- "gotmpl",
+    -- "gowork",
+    -- "haskell",
     "lua",
     "luadoc",
+    -- "make",
+    "markdown",
+    -- "odin",
     "printf",
+    -- "python",
+    "toml",
     "vim",
     "vimdoc",
-    "toml",
     "yaml",
-    "c",
-    "cpp",
-    "go",
-    "python",
-    "java",
   },
 
   highlight = {
@@ -28,3 +33,4 @@ local options = {
 }
 
 require("nvim-treesitter.configs").setup(options)
+
