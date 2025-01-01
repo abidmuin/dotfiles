@@ -1,9 +1,9 @@
 local options = {
   ensure_installed = {
     "bash",
-    -- "c",
-    -- "cmake",
-    -- "cpp",
+    "c",
+    "cmake",
+    "cpp",
     "fish",
     -- "go",
     -- "gomod",

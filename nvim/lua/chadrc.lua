@@ -14,4 +14,7 @@ M.base46 = {
   -- },
 }
 
+-- Require custom DAP configuration
+require("configs.dap")
+
 return M

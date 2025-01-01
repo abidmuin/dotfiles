@@ -58,4 +58,9 @@ return {
       require("configs.mason-conform")
     end,
   },
+
+  -- DAP
+  { "mfussenegger/nvim-dap" },
+  { "rcarriga/nvim-dap-ui", dependencies = "mfussenegger/nvim-dap" },
+  { "jay-babu/mason-nvim-dap.nvim", dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" } },
 }
