@@ -32,5 +32,6 @@ require("lazy").setup({
 		{ import = "plugins.which-key" },
 		{ import = "plugins.render-markdown" },
 		{ import = "plugins.vimtex" },
+		{ import = "plugins.image" },
 	},
 })
