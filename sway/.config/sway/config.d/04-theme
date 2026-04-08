@@ -1,0 +1,28 @@
+# ~/.config/sway/config.d/04-theme
+
+# Gruvbox Dark Palette
+set $bg      #282828
+set $red     #cc241d
+set $green   #98971a
+set $yellow  #d79921
+set $blue    #458588
+set $purple  #b16286
+set $aqua    #689d6a
+set $gray    #a89984
+
+# Window Borders and Chrome
+# Format:              border  bg      text    indicator child_border
+client.focused         $blue   $blue   $bg     $purple   $blue
+client.focused_inactive $bg     $bg     $gray   $bg       $bg
+client.unfocused       $bg     $bg     $gray   $bg       $bg
+client.urgent          $red    $red    $bg     $red      $red
+
+# General Window Settings
+default_border none
+default_floating_border none
+smart_borders on
+smart_gaps on
+
+# Gaps (Optional - adds 'Senior Dev' aesthetic)
+gaps inner 5
+gaps outer 2

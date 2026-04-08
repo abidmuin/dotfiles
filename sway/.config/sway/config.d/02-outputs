@@ -1,0 +1,11 @@
+# ~/.config/sway/config.d/02-outputs
+
+output eDP-1 {
+	mode 3000x2000@60Hz
+	position 0,0
+	scale 1.5
+	bg /usr/share/backgrounds/sway/bg.png fill
+}
+
+output eDP-1 subpixel rgb
+
