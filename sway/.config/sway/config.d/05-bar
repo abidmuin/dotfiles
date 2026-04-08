@@ -2,7 +2,7 @@
 
 bar {
     position top
-    font pango:JetBrainsMono Nerd Font 8
+    font pango:JetBrainsMono Nerd Font 10
     
     status_command ~/.config/sway/swaybar-status.sh
 
