@@ -8,7 +8,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term 'kitty'
+set $term 'kitty' 'zsh'
 set $menu fuzzel
 
 # BEGIN_SOUND_STACK
