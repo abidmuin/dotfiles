@@ -43,6 +43,8 @@ get_bluetooth() {
         else
             echo "[BT] $device_name"
         fi
+else
+	echo "[BT] xxx"
     fi
 }
 
