@@ -3,7 +3,7 @@
 # Read `man 5 sway` for a complete reference.
 
 # BEGIN_GLOBAL_VARIABLES 
-set $mod Mod4	# WinKey, Mod1=Alt
+set $mod Mod4
 set $left h
 set $down j
 set $up k
