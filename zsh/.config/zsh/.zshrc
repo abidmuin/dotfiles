@@ -23,7 +23,7 @@ alias gc='git commit -m'
 alias gp='git push'
 
 ## OS
-alias bye='swaymsg exit && shutdown -P now'
+alias bye='shutdown -P now'
 
 ## BEGIN_SUDO_MACRO
 sudo-command-line() {
