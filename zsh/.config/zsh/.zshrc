@@ -1,5 +1,16 @@
 # ~/.zshrc
 
+# BEGIN_ZSH_AUTOCOMPLETE
+fpath=(/usr/share/zsh/site-functions /usr/share/zsh/functions $fpath)
+
+autoload -Uz compinit
+compinit
+
+zstyle ':completion:*' menu select                    # Arrow keys to select from menu
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # Case-insensitive matching
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" # Match colors of your 'ls'
+# END_ZSH_AUTOCOMPLETE
+
 eval "$(zoxide init zsh)"
 
 # BEGIN_SETTINGS_PARAMS
