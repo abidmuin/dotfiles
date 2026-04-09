@@ -133,14 +133,18 @@ fi
 # }
 # END_YT_DLP
 
-# BEGIN_EVALS
-eval "$(starship init zsh)"
-eval "$(direnv hook zsh)"
-# END_EVALS
-
 # BEGIN_NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # END_NVM
+
+# BEGIN_RUST
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+# END_RUST
+
+# BEGIN_EVALS
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+# END_EVALS
 
