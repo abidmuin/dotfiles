@@ -1,17 +1,26 @@
 # ~/.zshrc
 
-# BEGIN_ZSH_AUTOCOMPLETE
+# BEGIN_COLOR
+## sudo xbps-install vivid
+# export LS_COLORS="$(vivid generate gruvbox-dark)"
+
+## BEGIN_ZSH_AUTOCOMPLETE
+### sudo xbps-install zsh-completions
 fpath=(/usr/share/zsh/site-functions /usr/share/zsh/functions $fpath)
 
 autoload -Uz compinit
 compinit
 
-zstyle ':completion:*' menu select                    # Arrow keys to select from menu
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # Case-insensitive matching
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" # Match colors of your 'ls'
-# END_ZSH_AUTOCOMPLETE
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+## END_ZSH_AUTOCOMPLETE
+# END_COLOR
 
+# BEGIN_ZOXIDE
+# sudo xbps-install zoxide
 eval "$(zoxide init zsh)"
+# END_ZOXIDE
 
 # BEGIN_SETTINGS_PARAMS
 HISTFILE="$ZDOTDIR/.zsh_history"
@@ -23,7 +32,8 @@ setopt hist_ignore_dups
 
 # BEGIN_ALIAS
 ## FILE / DIRECTORY
-alias ll='ls -la'
+alias ls='ls --color=auto'
+alias ll='ls -lah --color=auto'
 alias cat='bat'
 alias cd='z'
 
@@ -48,17 +58,16 @@ sudo-command-line() {
 zle -N sudo-command-line
 bindkey "\e\e" sudo-command-line
 ## END_SUDO_MACRO
-
 # END_ALIAS
 
 # BEGIN_ZSH_PLUGINS
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# FZF initialization
+## BEGIN_FZF 
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-
+## END_FZF
 # END_ZSH_PLUGINS
 
 # BEGIN_ENV
@@ -68,13 +77,16 @@ export EDITOR="nvim"
 
 # BEGIN_GPG
 export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye > /dev/null 2>&1
+if command -v gpg-connect-agent >/dev/null; then
+    gpg-connect-agent updatestartuptty /bye > /dev/null 2>&1
+fi
 # END_GPG
 
-# Auto-start Sway on TTY1
+# BEGIN_SWAY_AUTOSTART
 if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
     exec dbus-run-session sway
 fi
+# END_SWAY_AUTOSTART
 
 # BEGIN_YAZI
 function yy() {
@@ -91,5 +103,4 @@ function yy() {
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 # END_EVALS
-
 
