@@ -46,6 +46,11 @@ alias gp='git push'
 ## OS
 alias bye='shutdown -P now'
 
+## MPV MUSIC
+alias pause='echo "cycle pause" | socat - /tmp/mpvsocket'
+alias volume-up='echo "add volume 5" | socat - /tmp/mpvsocket'
+alias volume-down='echo "add volume -5" | socat - /tmp/mpvsocket'
+
 ## BEGIN_SUDO_MACRO
 sudo-command-line() {
     [[ -z $BUFFER ]] && zle up-history
@@ -99,8 +104,43 @@ function yy() {
 }
 # END_YAZI
 
+# BEGIN_YT_DLP
+## Usage: play "song name" or play "https://youtube.com/..."
+## AUDIO ONLY 
+function play() {
+  query="$*"
+  selection=$(yt-dlp "ytsearch10:$query" \
+        --get-title --get-id --default-search "ytsearch" \
+        --flat-playlist | sed 'N;s/\n/ - /' | fzf --height 40% --reverse --border)
+
+if [ -n "$selection" ]; then
+        video_id=$(echo "$selection" | awk -F ' - ' '{print $NF}')
+        echo "Playing: $selection"
+        mpv --no-video \
+          --ytdl-format="bestaudio" \
+          --ytdl-raw-options="yes-playlist=" \
+          --input-ipc-server=/tmp/mpvsocket \
+          "https://www.youtube.com/watch?v=${video_id}&list=RD${video_id}"
+fi
+}
+
+## VIDEO
+# function play() {
+#     mpv --app-id="mpv" \
+#         --ytdl-format="bestvideo[height<=720]+bestaudio/best" \
+#         --no-terminal \
+#         "ytdl://ytsearch:$*"
+# }
+# END_YT_DLP
+
 # BEGIN_EVALS
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 # END_EVALS
+
+# BEGIN_NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# END_NVM
 
