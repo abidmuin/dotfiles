@@ -40,14 +40,15 @@ bindkey "\e\e" sudo-command-line
 
 # END_ALIAS
 
-# BEGIN_PLUGINS
+# BEGIN_ZSH_PLUGINS
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # FZF initialization
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-# END_PLUGINS
+
+# END_ZSH_PLUGINS
 
 # BEGIN_ENV
 export MOZ_ENABLE_WAYLAND=1
@@ -64,7 +65,20 @@ if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
     exec dbus-run-session sway
 fi
 
+# BEGIN_YAZI
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+# END_YAZI
+
 # BEGIN_EVALS
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 # END_EVALS
+
+
