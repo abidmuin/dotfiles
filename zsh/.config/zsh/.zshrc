@@ -72,6 +72,8 @@ bindkey "\e\e" sudo-command-line
 ## BEGIN_FZF 
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --color=bw"
 ## END_FZF
 # END_ZSH_PLUGINS
 
