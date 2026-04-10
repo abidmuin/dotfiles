@@ -78,6 +78,7 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --color=bw"
 # END_ZSH_PLUGINS
 
 # BEGIN_ENV
+export WLR_DRM_NO_MODIFIERS=1
 export MOZ_ENABLE_WAYLAND=1
 export EDITOR="nvim"
 # END_ENV
