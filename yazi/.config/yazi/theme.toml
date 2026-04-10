@@ -1,15 +1,3 @@
-[manager]
-cwd = { fg = "#8ec07c" } # Aqua for current directory
-
-# Border colors
-border_symbol = "│"
-border_style  = { fg = "#504945" }
-
-# Highlight style
-hovered       = { fg = "#1d2021", bg = "#ebdbb2", bold = true }
-selection     = { bg = "#3c3836", bold = true }
-
-[status]
-separator_open  = ""
-separator_close = ""
-main_style      = { fg = "#ebdbb2", bg = "#3c3836" }
+[flavor]
+dark  = "gruvbox-dark"
+light = "gruvbox-dark"
