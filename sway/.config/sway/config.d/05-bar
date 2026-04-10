@@ -2,18 +2,19 @@
 
 bar {
     position top
-    font pango:JetBrainsMono Nerd Font 10
     
+    font pango:JetBrainsMono Nerd Font 10
     status_command ~/.config/sway/swaybar-status.sh
-
+    strip_workspace_numbers no
+    
     colors {
-        statusline $gray
-        background $bg
-        
-        # Format:            border  bg      text
-        focused_workspace    $blue   $blue   $bg
-        active_workspace     $gray   $bg     $blue
-        inactive_workspace   $bg     $bg     $gray
-        urgent_workspace     $red    $red    $bg
+        statusline #a89984
+        background #282828
+    
+    # Format:            border  bg      text
+        focused_workspace    #3c3836 #3c3836 #ebdbb2
+        active_workspace     #282828 #282828 #a89984
+        inactive_workspace   #282828 #282828 #928374
+        urgent_workspace     #cc241d #cc241d #ebdbb2
     }
 }
