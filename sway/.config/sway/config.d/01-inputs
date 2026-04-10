@@ -2,6 +2,8 @@
 
 # Read `man 5 sway-input` for more information about this section.
 
+seat * xcursor_theme Adwaita 24
+
 input type:touchpad {
 	dwt enabled
 	tap enabled
