@@ -123,14 +123,6 @@ if [ -n "$selection" ]; then
           "https://www.youtube.com/watch?v=${video_id}&list=RD${video_id}"
 fi
 }
-
-## VIDEO
-# function play() {
-#     mpv --app-id="mpv" \
-#         --ytdl-format="bestvideo[height<=720]+bestaudio/best" \
-#         --no-terminal \
-#         "ytdl://ytsearch:$*"
-# }
 # END_YT_DLP
 
 # BEGIN_NVM
@@ -147,4 +139,8 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 # END_EVALS
+
+# YEE_HAW!
+fastfetch
+
 
