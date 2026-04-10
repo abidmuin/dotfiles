@@ -151,12 +151,15 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
+# LOCK_SCREEN
+bindsym $mod+Escape exec swaylock -f -c 000000 --ring-color 888888 --key-hl-color ffffff
+
 # BEGIN_IDLE_STATE
 exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000' \
+    timeout 300 'swaylock -f -c 000000 --ring-color 888888 --key-hl-color ffffff' \
     timeout 600 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f -c 000000'
+    before-sleep 'swaylock -f -c 000000 --ring-color 888888 --key-hl-color ffffff'
 
 bindswitch --locked lid:on output * dpms off
 bindswitch --locked lid:off output * dpms on
