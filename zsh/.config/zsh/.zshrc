@@ -50,6 +50,9 @@ alias bye='shutdown -P now'
 alias pause='echo "cycle pause" | socat - /tmp/mpvsocket'
 alias volume-up='echo "add volume 5" | socat - /tmp/mpvsocket'
 alias volume-down='echo "add volume -5" | socat - /tmp/mpvsocket'
+# alias np='echo "{ \"command\": [\"get_property\", \"media-title\"] }" | socat - /tmp/mpvsocket | jq -r ".data"'
+alias next='echo "playlist-next" | socat - /tmp/mpvsocket'
+alias prev='echo "playlist-prev" | socat - /tmp/mpvsocket'
 
 ## BEGIN_SUDO_MACRO
 sudo-command-line() {
@@ -116,16 +119,24 @@ function play() {
         --get-title --get-id --default-search "ytsearch" \
         --flat-playlist | sed 'N;s/\n/ - /' | fzf --height 40% --reverse --border)
 
-if [ -n "$selection" ]; then
+  if [ -n "$selection" ]; then
         video_id=$(echo "$selection" | awk -F ' - ' '{print $NF}')
-        echo "Playing: $selection"
+
+        clear
+        
         mpv --no-video \
           --ytdl-format="bestaudio" \
           --ytdl-raw-options="yes-playlist=" \
           --input-ipc-server=/tmp/mpvsocket \
+          --msg-level=all=status \
+          --terminal=yes \
+          --msg-color=yes \
+          --term-playing-msg=$'\n\e[1;38;2;57;255;20m󰎈 Now Playing:\e[0m \e[1;37m${media-title}\e[0m\n' \
+          --term-status-msg=$'\e[38;2;57;255;20m󰎈 [${time-pos} / ${duration}]\e[0m \e[1;30m(${percent-pos}%)\e[0m' \
           "https://www.youtube.com/watch?v=${video_id}&list=RD${video_id}"
-fi
+  fi
 }
+
 # END_YT_DLP
 
 # BEGIN_NVM
