@@ -20,3 +20,7 @@ input type:tablet_tool {
 	map_to_output *
 }
 
+# Map the pen/touch to the screen first
+input "1386:20762:Wacom_HID_511A_Finger" map_to_output eDP-1
+input "1386:20762:Wacom_HID_511A_Pen" map_to_output eDP-1
+

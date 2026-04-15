@@ -154,6 +154,10 @@ bindsym $mod+r mode "resize"
 # LOCK_SCREEN
 bindsym $mod+Escape exec swaylock -f -c 000000 --ring-color 888888 --key-hl-color ffffff
 
+# AUTO_ROTATE
+bindsym $mod+Shift+r exec pkill rot8 || exec rot8
+
+
 # BEGIN_IDLE_STATE
 exec swayidle -w \
     timeout 300 'swaylock -f -c 000000 --ring-color 888888 --key-hl-color ffffff' \

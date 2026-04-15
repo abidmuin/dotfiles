@@ -17,6 +17,9 @@ exec pipewire-pulse
 exec wireplumber
 # END_SOUND_STACK
 
+# AUTO_ROTATE
+exec rot8 --touchscreen "Wacom HID 511A Finger" --stylus "Wacom HID 511A Pen"
+
 # DEPENDENCIES
 include ~/.config/sway/config.d/*
 
