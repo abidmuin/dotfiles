@@ -1,4 +1,5 @@
 alsa-utils-1.2.15.1_1
+asciiquarium-1.1_3
 base-devel-20181003_2
 base-system-0.114_2
 bash-completion-2.16.0_1
@@ -7,6 +8,7 @@ bluetui-0.8.0_1
 bluez-5.86_2
 brightnessctl-0.5.1_1
 btop-1.4.6_1
+cmatrix-2.0_2
 curl-8.19.0_1
 dbus-elogind-1.14.6_2
 direnv-2.37.1_1
@@ -21,10 +23,13 @@ git-2.53.0_1
 github-cli-2.89.0_1
 gnupg2-2.4.9_1
 grub-x86_64-efi-2.12_2
+intel-gpu-tools-2.1_1
+intel-undervolt-1.7_1
 intel-video-accel-1_2
 kitty-0.46.2_1
 libspa-bluetooth-1.6.2_1
 libva-intel-driver-2.4.1_1
+libva-utils-2.22.0_1
 lm_sensors-3.6.0_2
 mesa-dri-25.3.3_1
 mesa-vaapi-25.3.3_1
@@ -35,6 +40,7 @@ nerd-fonts-ttf-3.4.0_1
 pass-1.7.4_3
 pipewire-1.6.2_1
 polkit-127_1
+powertop-2.15_2
 pulseaudio-utils-16.1_2
 pulsemixer-1.5.1_2
 qutebrowser-3.7.0_1
@@ -44,6 +50,7 @@ stow-2.4.1_1
 sway-1.11_2
 swayidle-1.9.0_1
 swaylock-1.8.5_1
+thermald-2.15.10_1
 tlp-1.9.1_1
 unzip-6.0_15
 wget-1.25.0_1
