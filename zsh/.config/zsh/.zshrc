@@ -28,6 +28,17 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt share_history
 setopt hist_ignore_dups
+setopt FLOW_CONTROL
+
+# Special Keys
+bindkey "^[[3~"  delete-char          # Delete
+bindkey "^[[2~"  overwrite-mode       # Insert
+bindkey "^[[5~"  up-line-or-history   # PgUp
+bindkey "^[[6~"  down-line-or-history # PgDn
+
+# Ctrl + Directions (Word Jumping)
+bindkey "^[[1;5C" forward-word        # Ctrl + Right
+bindkey "^[[1;5D" backward-word       # Ctrl + Left
 # END_SETTINGS_PARAMS
 
 # BEGIN_ALIAS
@@ -136,7 +147,6 @@ function play() {
           "https://www.youtube.com/watch?v=${video_id}&list=RD${video_id}"
   fi
 }
-
 # END_YT_DLP
 
 # BEGIN_NVM
@@ -156,5 +166,4 @@ eval "$(direnv hook zsh)"
 
 # YEE_HAW!
 fastfetch
-
 
