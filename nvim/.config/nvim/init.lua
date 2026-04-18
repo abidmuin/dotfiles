@@ -8,4 +8,3 @@ require("core.keymaps")
 
 -- PLUGINS
 require("core.lazy")
-
