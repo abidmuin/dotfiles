@@ -16,6 +16,7 @@ return {
 			-- "pyright",
 			-- "intelephense",
 			-- "omnisharp",
+			"html",
 			"jdtls",
 			"texlab",
 			"lua_ls",
