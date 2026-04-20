@@ -2,33 +2,49 @@
 
 return {
 	{
-		"hrsh7th/nvim-cmp",
+		"saghen/blink.cmp",
+		version = "*",
+
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
+			"rafamadriz/friendly-snippets",
+			{
+				"L3MON4D3/LuaSnip",
+				config = function()
+					require("luasnip.loaders.from_vscode").lazy_load()
+				end,
+			},
 		},
-		config = function()
-			local cmp = require("cmp")
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
-					end,
+
+		opts = {
+			keymap = {
+				preset = "default",
+				["<Tab>"] = { "snippet_forward", "fallback" },
+				["<S-Tab>"] = { "snippet_backward", "fallback" },
+				["<C-y>"] = { "select_and_accept" },
+				["<CR>"] = { "accept", "fallback" },
+			},
+
+			appearance = {
+				use_nvim_cmp_as_default = true,
+				nerd_font_variant = "mono",
+			},
+
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+
+			completion = {
+				ghost_text = { enabled = true },
+				documentation = { auto_show = true, auto_show_delay_ms = 500 },
+				menu = {
+					draw = {
+						columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+					},
 				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
-					["<Tab>"] = cmp.mapping.select_next_item(),
-					["<S-Tab>"] = cmp.mapping.select_prev_item(),
-				}),
-				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-					{ name = "buffer" },
-					{ name = "path" },
-				}),
-			})
-		end,
+			},
+
+			snippets = { preset = "luasnip" },
+		},
+		opts_extend = { "sources.default" },
 	},
 }

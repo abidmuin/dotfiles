@@ -5,17 +5,12 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"hrsh7th/cmp-nvim-lsp",
+		"saghen/blink.cmp",
 	},
 	config = function()
 		require("mason").setup()
 
 		local servers = {
-			-- "clangd",
-			-- "gopls",
-			-- "pyright",
-			-- "intelephense",
-			-- "omnisharp",
 			"html",
 			"jdtls",
 			"texlab",
@@ -24,18 +19,9 @@ return {
 
 		require("mason-lspconfig").setup({
 			ensure_installed = servers,
-			automatic_enable = false,
 		})
 
-		local capabilities = vim.lsp.protocol.make_client_capabilities() or {}
-		local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-
-		if status_ok then
-			local cmp_caps = cmp_nvim_lsp.default_capabilities()
-			if cmp_caps then
-				capabilities = vim.tbl_deep_extend("force", capabilities, cmp_caps)
-			end
-		end
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		vim.lsp.config("*", {
 			capabilities = capabilities,
@@ -45,8 +31,17 @@ return {
 			settings = {
 				Lua = {
 					diagnostics = { globals = { "vim" } },
+					workspace = { checkThirdParty = false },
 				},
 			},
+		})
+
+		for _, server in ipairs(servers) do
+			vim.lsp.enable(server)
+		end
+
+		vim.diagnostic.config({
+			float = { border = "rounded" },
 		})
 
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
@@ -59,6 +54,7 @@ return {
 				local opts = { buffer = ev.buf }
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 				vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 			end,
