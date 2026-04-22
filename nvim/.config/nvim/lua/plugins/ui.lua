@@ -25,6 +25,18 @@ return {
 				-- wo = { wrap = true } -- Wrap notifications
 			},
 		},
+		terminal = {
+			win = {
+				style = "float",
+				border = "rounded",
+				width = 0.5,
+				height = 0.5,
+				backdrop = 10,
+				wo = {
+					winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+				},
+			},
+		},
 	},
 	keys = {
 		-- Top Pickers & Explorer
