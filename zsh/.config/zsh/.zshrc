@@ -55,7 +55,7 @@ alias gc='git commit -m'
 alias gp='git push'
 
 ## OS
-alias bye='shutdown -P now'
+alias bye='sudo shutdown -P now'
 
 ## MPV MUSIC
 alias pause='echo "cycle pause" | socat - /tmp/mpvsocket'
