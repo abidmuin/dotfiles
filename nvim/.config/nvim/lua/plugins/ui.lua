@@ -29,8 +29,8 @@ return {
 			win = {
 				style = "float",
 				border = "rounded",
-				width = 0.5,
-				height = 0.5,
+				width = 0.8,
+				height = 0.8,
 				backdrop = 10,
 				wo = {
 					winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
@@ -566,6 +566,13 @@ return {
 					},
 				})
 			end,
+		},
+		{
+			"<leader>dk",
+			function()
+				Snacks.terminal("lazydocker")
+			end,
+			desc = "Lazydocker",
 		},
 	},
 	init = function()
