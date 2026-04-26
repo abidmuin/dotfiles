@@ -14,6 +14,8 @@ return {
 			"html",
 			"texlab",
 			"lua_ls",
+			"dockerls",
+			"docker_compose_language_service",
 		}
 
 		require("mason-lspconfig").setup({
