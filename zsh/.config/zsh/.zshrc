@@ -166,5 +166,5 @@ eval "$(direnv hook zsh)"
 # END_EVALS
 
 # YEE_HAW!
-fastfetch
+# fastfetch
 
